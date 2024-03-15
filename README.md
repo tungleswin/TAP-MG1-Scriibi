@@ -1,1 +1,1 @@
-# TAP-MG1-Swin
+# TAP-MG1-Scriibi
