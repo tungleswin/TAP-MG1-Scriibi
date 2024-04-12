@@ -5,18 +5,18 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size boxSize = MediaQuery.of(context).size;
+    final Size screenSize = MediaQuery.of(context).size;
 
     return OutlinedButton(
       onPressed: () {
         // TODO: add authentication function here
       },
       style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF33A849)),
+          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF559A2A)),
           padding: MaterialStateProperty.all<EdgeInsets>(
             EdgeInsets.symmetric(
-                vertical: boxSize.height * 0.035,
-                horizontal: boxSize.width * 0),
+                vertical: screenSize.height * 0.035,
+                horizontal: screenSize.width * 0),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
@@ -28,7 +28,7 @@ class LoginButton extends StatelessWidget {
           Text(
             'LOG IN',
             style: TextStyle(
-              fontSize: boxSize.height * 0.02,
+              fontSize: screenSize.height * 0.02,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -37,7 +37,7 @@ class LoginButton extends StatelessWidget {
           Icon(
             Icons.arrow_forward_ios,
             color: Colors.white,
-            size: boxSize.height * 0.02,
+            size: screenSize.height * 0.02,
           ),
         ],
       ),

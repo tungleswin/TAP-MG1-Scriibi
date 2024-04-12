@@ -5,6 +5,15 @@ class LogoBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+        child: Container(
+      width: 180,
+      height: 60,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage('assets/Scriibi-big-logo.png'),
+        fit: BoxFit.contain,
+      )),
+    ));
   }
 }
