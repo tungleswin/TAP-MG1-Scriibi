@@ -50,10 +50,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 // Place holder to add email login box here
-                // EmailLoginBox(),
+                EmailLoginBox(),
                 const SizedBox(height: 20),
                 // Place holder to add password login box here
-                // PasswordLoginBox(),
+                PasswordLoginBox(),
                 const SizedBox(height: 20),
                 // Place holder to add text or button to reset password
                 TextResetPassword(),
