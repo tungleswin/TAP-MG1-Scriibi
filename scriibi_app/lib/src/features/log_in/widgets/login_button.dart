@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scriibi_app/src/features/classes_list/class_list_screen.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key});
@@ -10,6 +11,12 @@ class LoginButton extends StatelessWidget {
     return OutlinedButton(
       onPressed: () {
         // TODO: add authentication function here
+
+        // Temporary navigator for the login page without authentication
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ClassListScreen()),
+        );
       },
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF559A2A)),
