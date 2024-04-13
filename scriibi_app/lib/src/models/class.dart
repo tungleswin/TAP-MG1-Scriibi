@@ -9,6 +9,7 @@ class Class {
   });
 
   // getter
+  String get title => '$className $term';
 
   // variables
   final String term;

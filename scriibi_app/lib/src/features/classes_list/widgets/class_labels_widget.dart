@@ -14,7 +14,7 @@ class ClassLabels extends StatelessWidget {
           flex: 2,
           child: Container(
             margin: EdgeInsets.only(left: 5),
-            child: Text(
+            child: const Text(
               'Title',
               style: TextStyle(
                 color: Colors.green,
@@ -26,7 +26,7 @@ class ClassLabels extends StatelessWidget {
         Expanded(
           child: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Class',
               style: TextStyle(
                 color: Colors.green,
@@ -38,7 +38,7 @@ class ClassLabels extends StatelessWidget {
         Expanded(
           child: Container(
             alignment: Alignment.center,
-            child: Text(
+            child: const Text(
               'Task Date',
               style: TextStyle(
                 color: Colors.green,
@@ -47,7 +47,7 @@ class ClassLabels extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 16.0) // Add some spacing below the labels
+        const SizedBox(height: 18.0) // Add some spacing below the labels
       ],
     );
   }
