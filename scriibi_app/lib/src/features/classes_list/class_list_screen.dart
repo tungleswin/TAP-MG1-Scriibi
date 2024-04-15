@@ -4,7 +4,7 @@ import 'package:scriibi_app/src/features/classes_list/widgets/class_app_bar.dart
 import 'package:scriibi_app/src/features/classes_list/widgets/class_labels_widget.dart';
 import 'package:scriibi_app/constants/test_class.dart';
 import 'package:scriibi_app/src/features/classes_list/widgets/class_widget.dart';
-import 'package:scriibi_app/src/features/classes_list/widgets/search_box.dart';
+import 'package:scriibi_app/src/features/classes_list/widgets/class_search_box.dart';
 
 class ClassListScreen extends StatefulWidget {
   const ClassListScreen({super.key});

@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.17.0  # for date formatter
+  intl: ^0.19.0  # for date formatter
 
 
   # The following adds the Cupertino Icons font to your application.
