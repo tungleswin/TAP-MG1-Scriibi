@@ -2,11 +2,12 @@ import 'dart:ui';
 
 class Student {
   // constructors
-  const Student({
+  Student({
     required this.firstName,
     required this.lastName,
     required this.className,
     required this.studentID,
+    this.fileNames = const [],
   });
 
   // getter
@@ -27,4 +28,6 @@ class Student {
   final String lastName;
   final String className;
   final String studentID;
+  final List<String> fileNames;
+  bool isExpanded = false;
 }

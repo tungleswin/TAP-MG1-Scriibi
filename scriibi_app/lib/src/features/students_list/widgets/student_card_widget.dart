@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:scriibi_app/src/models/student.dart';
 
-class StudentCard extends StatelessWidget {
+class StudentCard extends StatefulWidget {
   // constructors
   const StudentCard({super.key, required this.studentData});
 
   // variables
   final Student studentData;
 
+  @override
+  State<StudentCard> createState() => _StudentCardState();
+}
+
+class _StudentCardState extends State<StudentCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,8 +30,8 @@ class StudentCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(studentData.fullName),
-                      Text(studentData.subtitle),
+                      Text(widget.studentData.fullName),
+                      Text(widget.studentData.subtitle),
                     ],
                   )),
             ),
@@ -34,32 +39,43 @@ class StudentCard extends StatelessWidget {
               flex: 1,
               child: Container(
                   alignment: Alignment.center,
-                  child: Text(studentData.className)),
+                  child: Text(widget.studentData.className)),
             ),
             Expanded(
               flex: 1,
               child: Stack(
                 children: [
-                  Container(
-                    height: 45,
-                    alignment: Alignment.center,
-                    child: Text(
-                      '3', // Number of file uploaded
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                  if (widget.studentData.fileNames.isNotEmpty)
+                    Container(
+                      height: 45,
+                      alignment: Alignment.center,
+                      child: Text(
+                        '${widget.studentData.fileNames.length}', // Number of file uploaded
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ),
+                  if (widget.studentData.fileNames.isEmpty)
+                    Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/icons-plus.png',
+                        width: 30,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  // The frame for number of documents uploaded
+                  if (widget.studentData.fileNames.isNotEmpty)
+                    Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/icons-document.png',
+                        height: 45,
                         color: Colors.green,
                       ),
                     ),
-                  ),
-                  // The frame for number of documents uploaded
-                  Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      'assets/icons-document.png',
-                      height: 45,
-                      color: Colors.green,
-                    ),
-                  ),
                 ],
               ),
             ),
