@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scriibi_app/src/models/student.dart';
 import 'package:scriibi_app/constants/colors_app.dart';
-import 'package:intl/intl.dart';
+import 'package:scriibi_app/src/features/students_list/widgets/delete_dialog.dart';
 
 class StudentExpandedVersionPart extends StatefulWidget {
   // constructors
@@ -53,6 +53,7 @@ class _StudentExpandedVersionPartState
                           IconButton(
                             onPressed: () {
                               // TODO: send delete request to the backend
+                              DeleteConfirmationDialog.show(context);
                             },
                             icon: const Icon(
                               Icons.delete_outline_outlined,
