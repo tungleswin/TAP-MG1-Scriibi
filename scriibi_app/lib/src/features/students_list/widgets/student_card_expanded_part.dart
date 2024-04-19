@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scriibi_app/src/models/student.dart';
 import 'package:scriibi_app/constants/colors_app.dart';
 import 'package:scriibi_app/src/features/students_list/widgets/delete_dialog.dart';
+import 'package:scriibi_app/src/features/camera/scan_document.dart';
 
 class StudentExpandedVersionPart extends StatefulWidget {
   // constructors
@@ -77,6 +78,10 @@ class _StudentExpandedVersionPartState
               child: GestureDetector(
                 onTap: () {
                   // TODO: Add camera function here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ScanDocument()),
+                  );
                 },
                 child: Container(
                   alignment: Alignment.centerLeft,

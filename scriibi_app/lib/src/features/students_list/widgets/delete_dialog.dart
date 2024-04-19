@@ -11,7 +11,7 @@ class DeleteConfirmationDialog {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          title: Column(
+          title: const Column(
             children: [
               SizedBox(height: 16),
               Center(
@@ -34,8 +34,12 @@ class DeleteConfirmationDialog {
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
                     vertical: 10,
                     horizontal: 20,
                   ),
@@ -44,26 +48,21 @@ class DeleteConfirmationDialog {
                     style: TextStyle(color: Colours.appGreen),
                   ),
                 ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
-                ),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.white),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Text(
                     "Keep",
                     style: TextStyle(color: Colors.green),
                   ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.white),
                 ),
               ),
             ],
