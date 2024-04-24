@@ -3,6 +3,7 @@ import 'package:scriibi_app/src/models/student.dart';
 import 'package:scriibi_app/constants/colors_app.dart';
 import 'package:scriibi_app/src/features/students_list/widgets/delete_dialog.dart';
 import 'package:scriibi_app/src/features/camera/scan_document.dart';
+import 'package:scriibi_app/src/features/students_list/widgets/take_photo_button.dart';
 
 class StudentExpandedVersionPart extends StatefulWidget {
   // constructors
@@ -41,7 +42,7 @@ class _StudentExpandedVersionPartState
         child: Row(
           children: [
             Expanded(
-              flex: 5,
+              flex: 3,
               child: Container(
                 child: ListView.builder(
                   shrinkWrap: true,
@@ -75,23 +76,7 @@ class _StudentExpandedVersionPartState
             ),
             Expanded(
               flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  // TODO: Add camera function here
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ScanDocument()),
-                  );
-                },
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: Image.asset(
-                    'assets/icons-plus.png',
-                    width: 30,
-                    color: Colors.amber,
-                  ),
-                ),
-              ),
+              child: TakePhotoIconButton(),
             ),
           ],
         ),

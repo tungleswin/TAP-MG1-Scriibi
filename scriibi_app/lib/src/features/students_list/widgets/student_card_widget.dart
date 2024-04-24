@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scriibi_app/src/features/students_list/widgets/take_photo_button.dart';
 import 'package:scriibi_app/src/models/student.dart';
 import 'package:scriibi_app/src/features/students_list/widgets/student_card_expanded_part.dart';
 
@@ -72,14 +73,7 @@ class _StudentCardState extends State<StudentCard> {
                             ),
                           ),
                         if (widget.studentData.fileNames.isEmpty)
-                          Container(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'assets/icons-plus.png',
-                              width: 30,
-                              color: Colors.amber,
-                            ),
-                          ),
+                          TakePhotoIconButton(),
                         // The frame for number of documents uploaded
                         if (widget.studentData.fileNames.isNotEmpty)
                           Container(
