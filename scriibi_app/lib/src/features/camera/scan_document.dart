@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:scriibi_app/src/features/camera/widgets/take_photo_app_bar.dart';
 
 class ScanDocument extends StatefulWidget {
   const ScanDocument({super.key});
@@ -17,25 +18,14 @@ class _ScanDocumentState extends State<ScanDocument> {
   // main
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Take photos'),
-          actions: [
-            IconButton(
-              onPressed: getImageFromGallery,
-              icon: Icon(Icons.image),
-            ),
-            IconButton(
-              onPressed: getImageFromCamera,
-              icon: Icon(Icons.camera_alt),
-            )
-          ],
-        ),
-        body: file == null
-            ? Center(child: Text('No image selected'))
-            : Image.file(file!),
+    return Scaffold(
+      appBar: TakePhotoAppBar(
+        onPressedCamera: getImageFromCamera,
+        onPressedGallery: getImageFromGallery,
       ),
+      body: file == null
+          ? Center(child: Text('No image selected'))
+          : Image.file(file!),
     );
   }
 
