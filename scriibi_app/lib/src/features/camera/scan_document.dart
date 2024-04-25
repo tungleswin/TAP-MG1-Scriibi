@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -7,6 +9,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:cunning_document_scanner/cunning_document_scanner.dart';
 import 'package:flutter_document_scanner/flutter_document_scanner.dart';
 import 'package:flutter_genius_scan/flutter_genius_scan.dart';
+import 'package:printing/printing.dart';
 
 class ScanDocument extends StatefulWidget {
   const ScanDocument({super.key});
@@ -32,17 +35,12 @@ class _ScanDocumentState extends State<ScanDocument> {
       ),
       body: files.isEmpty
           ? Center(child: Text('No image selected'))
-          : ListView.builder(
-              itemCount: files.length,
-              itemBuilder: (context, index) {
-                return Image.file(files[index]);
-              },
-            ),
-      floatingActionButton: FloatingActionButton(
-        // TODO: Add generating pdf function here
-        onPressed: generatePDF,
-        child: Icon(Icons.picture_as_pdf),
-      ),
+          : PdfPreview(build: (format) => generatePDF(format)),
+      // floatingActionButton: FloatingActionButton(
+      //   // TODO: Add generating pdf function here
+      //   onPressed: generatePDF,
+      //   child: Icon(Icons.picture_as_pdf),
+      // ),
     );
   }
 
@@ -65,6 +63,7 @@ class _ScanDocumentState extends State<ScanDocument> {
     final scannedFiles = await CunningDocumentScanner.getPictures();
     ;
     setState(() {
+      files.clear(); // Clear existing files from the list
       if (scannedFiles != null && scannedFiles.isNotEmpty) {
         // If there are scanned files, add each one to the files list
         for (String path in scannedFiles) {
@@ -77,23 +76,31 @@ class _ScanDocumentState extends State<ScanDocument> {
   }
 
   // -- To generate pdf from chosen images
-  Future<void> generatePDF() async {
+  Future<Uint8List> generatePDF(PdfPageFormat format) async {
+    final doc = pw.Document(pageMode: PdfPageMode.outlines);
+
     for (var file in files) {
       final image = pw.MemoryImage(file.readAsBytesSync());
-      pdf.addPage(
+      doc.addPage(
         pw.Page(
+          pageTheme: pw.PageTheme(
+            pageFormat: PdfPageFormat.a4.copyWith(
+              marginBottom: 10,
+              marginLeft: 10,
+              marginRight: 10,
+              marginTop: 10,
+            ),
+            orientation: pw.PageOrientation.portrait,
+          ),
           build: (context) => pw.Center(
-            child: pw.Padding(
-                padding: pw.EdgeInsets.all(10),
-                child: pw.Image(
-                  image,
-                  fit: pw.BoxFit.contain,
-                )),
+            child: pw.Image(
+              image,
+              fit: pw.BoxFit.contain,
+            ),
           ),
         ),
       );
     }
-    final pdfFile =
-        await pdf.save(); // handle saving or sharing PDF file as needed
+    return await doc.save();
   }
 }
